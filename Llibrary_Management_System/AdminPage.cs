@@ -16,5 +16,29 @@ namespace Llibrary_Management_System
         {
             InitializeComponent();
         }
+
+        private void deleteBookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteBook dltbook = new DeleteBook();
+            dltbook.Show();
+        }
+
+        private void addUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Register rgst = new Register();
+            rgst.Show();
+        }
+
+        private void deleteUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteUser dltuser = new DeleteUser();
+            dltuser.Show();
+        }
+
+        private void userDashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            User user = new User();
+            user.Show();
+        }
     }
 }

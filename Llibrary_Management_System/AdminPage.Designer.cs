@@ -32,8 +32,8 @@ namespace Llibrary_Management_System
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hesabatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hesabatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userDashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,12 +59,21 @@ namespace Llibrary_Management_System
             this.addUserToolStripMenuItem.Name = "addUserToolStripMenuItem";
             this.addUserToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.addUserToolStripMenuItem.Text = "Add User";
+            this.addUserToolStripMenuItem.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
             // 
             // deleteUserToolStripMenuItem
             // 
             this.deleteUserToolStripMenuItem.Name = "deleteUserToolStripMenuItem";
             this.deleteUserToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.deleteUserToolStripMenuItem.Text = "Delete User";
+            this.deleteUserToolStripMenuItem.Click += new System.EventHandler(this.deleteUserToolStripMenuItem_Click);
+            // 
+            // deleteBookToolStripMenuItem
+            // 
+            this.deleteBookToolStripMenuItem.Name = "deleteBookToolStripMenuItem";
+            this.deleteBookToolStripMenuItem.Size = new System.Drawing.Size(105, 24);
+            this.deleteBookToolStripMenuItem.Text = "Delete Book";
+            this.deleteBookToolStripMenuItem.Click += new System.EventHandler(this.deleteBookToolStripMenuItem_Click);
             // 
             // hesabatToolStripMenuItem
             // 
@@ -72,17 +81,12 @@ namespace Llibrary_Management_System
             this.hesabatToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
             this.hesabatToolStripMenuItem.Text = "Report";
             // 
-            // deleteBookToolStripMenuItem
-            // 
-            this.deleteBookToolStripMenuItem.Name = "deleteBookToolStripMenuItem";
-            this.deleteBookToolStripMenuItem.Size = new System.Drawing.Size(105, 24);
-            this.deleteBookToolStripMenuItem.Text = "Delete Book";
-            // 
             // userDashboardToolStripMenuItem
             // 
             this.userDashboardToolStripMenuItem.Name = "userDashboardToolStripMenuItem";
             this.userDashboardToolStripMenuItem.Size = new System.Drawing.Size(129, 24);
             this.userDashboardToolStripMenuItem.Text = "User Dashboard";
+            this.userDashboardToolStripMenuItem.Click += new System.EventHandler(this.userDashboardToolStripMenuItem_Click);
             // 
             // AdminPage
             // 

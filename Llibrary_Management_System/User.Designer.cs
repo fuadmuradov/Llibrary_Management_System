@@ -38,11 +38,11 @@ namespace Llibrary_Management_System
             this.todayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tomorrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.debtorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbgenre = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtSearchname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSearchBook = new System.Windows.Forms.Button();
             this.btnSearchReader = new System.Windows.Forms.Button();
@@ -51,9 +51,12 @@ namespace Llibrary_Management_System
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbDay = new System.Windows.Forms.ComboBox();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -75,6 +78,7 @@ namespace Llibrary_Management_System
             this.addBookToolStripMenuItem.Name = "addBookToolStripMenuItem";
             this.addBookToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
             this.addBookToolStripMenuItem.Text = "Add Book";
+            this.addBookToolStripMenuItem.Click += new System.EventHandler(this.addBookToolStripMenuItem_Click);
             // 
             // readersToolStripMenuItem
             // 
@@ -90,11 +94,12 @@ namespace Llibrary_Management_System
             this.deleteReaderToolStripMenuItem.Name = "deleteReaderToolStripMenuItem";
             this.deleteReaderToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.deleteReaderToolStripMenuItem.Text = "Delete Reader";
+            this.deleteReaderToolStripMenuItem.Click += new System.EventHandler(this.deleteReaderToolStripMenuItem_Click);
             // 
             // reportToolStripMenuItem
             // 
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(68, 26);
             this.reportToolStripMenuItem.Text = "Report";
             // 
             // bookTrackingToolStripMenuItem
@@ -104,7 +109,7 @@ namespace Llibrary_Management_System
             this.tomorrowToolStripMenuItem,
             this.debtorsToolStripMenuItem});
             this.bookTrackingToolStripMenuItem.Name = "bookTrackingToolStripMenuItem";
-            this.bookTrackingToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
+            this.bookTrackingToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
             this.bookTrackingToolStripMenuItem.Text = "Book Tracking";
             // 
             // todayToolStripMenuItem
@@ -125,13 +130,16 @@ namespace Llibrary_Management_System
             this.debtorsToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.debtorsToolStripMenuItem.Text = "Debtors";
             // 
-            // comboBox1
+            // cmbgenre
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 79);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(216, 24);
-            this.comboBox1.TabIndex = 1;
+            this.cmbgenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbgenre.FormattingEnabled = true;
+            this.cmbgenre.Location = new System.Drawing.Point(12, 79);
+            this.cmbgenre.Name = "cmbgenre";
+            this.cmbgenre.Size = new System.Drawing.Size(216, 24);
+            this.cmbgenre.TabIndex = 1;
+            this.cmbgenre.SelectedIndexChanged += new System.EventHandler(this.cmbgenre_SelectedIndexChanged);
+            this.cmbgenre.SelectedValueChanged += new System.EventHandler(this.cmbgenre_SelectedValueChanged);
             // 
             // dataGridView1
             // 
@@ -140,8 +148,9 @@ namespace Llibrary_Management_System
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(525, 328);
+            this.dataGridView1.Size = new System.Drawing.Size(525, 399);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // dataGridView2
             // 
@@ -150,7 +159,7 @@ namespace Llibrary_Management_System
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(525, 328);
+            this.dataGridView2.Size = new System.Drawing.Size(525, 107);
             this.dataGridView2.TabIndex = 3;
             // 
             // label1
@@ -163,12 +172,12 @@ namespace Llibrary_Management_System
             this.label1.TabIndex = 4;
             this.label1.Text = "Genre";
             // 
-            // textBox2
+            // txtSearchname
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 156);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(353, 22);
-            this.textBox2.TabIndex = 7;
+            this.txtSearchname.Location = new System.Drawing.Point(12, 156);
+            this.txtSearchname.Name = "txtSearchname";
+            this.txtSearchname.Size = new System.Drawing.Size(353, 22);
+            this.txtSearchname.TabIndex = 7;
             // 
             // label2
             // 
@@ -176,9 +185,9 @@ namespace Llibrary_Management_System
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 128);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 25);
+            this.label2.Size = new System.Drawing.Size(130, 25);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Search Book:";
+            this.label2.Text = "Book Name:";
             // 
             // btnSearchBook
             // 
@@ -190,10 +199,11 @@ namespace Llibrary_Management_System
             this.btnSearchBook.TabIndex = 9;
             this.btnSearchBook.Text = "Search";
             this.btnSearchBook.UseVisualStyleBackColor = false;
+            this.btnSearchBook.Click += new System.EventHandler(this.btnSearchBook_Click);
             // 
             // btnSearchReader
             // 
-            this.btnSearchReader.BackColor = System.Drawing.Color.Khaki;
+            this.btnSearchReader.BackColor = System.Drawing.Color.Orange;
             this.btnSearchReader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchReader.Location = new System.Drawing.Point(923, 140);
             this.btnSearchReader.Name = "btnSearchReader";
@@ -201,6 +211,7 @@ namespace Llibrary_Management_System
             this.btnSearchReader.TabIndex = 12;
             this.btnSearchReader.Text = "Search";
             this.btnSearchReader.UseVisualStyleBackColor = false;
+            this.btnSearchReader.Click += new System.EventHandler(this.btnSearchReader_Click);
             // 
             // label3
             // 
@@ -208,9 +219,9 @@ namespace Llibrary_Management_System
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(567, 128);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 25);
+            this.label3.Size = new System.Drawing.Size(245, 25);
             this.label3.TabIndex = 11;
-            this.label3.Text = "Search Reader:";
+            this.label3.Text = "Reader Identity Number:";
             // 
             // textBox1
             // 
@@ -229,6 +240,7 @@ namespace Llibrary_Management_System
             this.button1.TabIndex = 13;
             this.button1.Text = "Add Reader Basket";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -242,6 +254,7 @@ namespace Llibrary_Management_System
             // 
             // cmbDay
             // 
+            this.cmbDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDay.FormattingEnabled = true;
             this.cmbDay.Items.AddRange(new object[] {
             "3",
@@ -253,12 +266,34 @@ namespace Llibrary_Management_System
             this.cmbDay.Size = new System.Drawing.Size(125, 24);
             this.cmbDay.TabIndex = 14;
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(557, 370);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersWidth = 51;
+            this.dataGridView3.RowTemplate.Height = 24;
+            this.dataGridView3.Size = new System.Drawing.Size(525, 240);
+            this.dataGridView3.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(562, 342);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 25);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Orders:";
+            // 
             // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1091, 551);
+            this.ClientSize = new System.Drawing.Size(1091, 622);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbDay);
             this.Controls.Add(this.button1);
@@ -267,19 +302,21 @@ namespace Llibrary_Management_System
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnSearchBook);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtSearchname);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbgenre);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "User";
             this.Text = "User";
+            this.Load += new System.EventHandler(this.User_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,11 +329,11 @@ namespace Llibrary_Management_System
         private System.Windows.Forms.ToolStripMenuItem readersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteReaderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbgenre;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtSearchname;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSearchBook;
         private System.Windows.Forms.Button btnSearchReader;
@@ -309,5 +346,7 @@ namespace Llibrary_Management_System
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbDay;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Label label5;
     }
 }
