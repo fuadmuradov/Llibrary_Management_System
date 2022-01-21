@@ -40,17 +40,19 @@ namespace Llibrary_Management_System
                 return;
             }
 
-            dataGridView1.DataSource = db.Orderrs.Where(x => x.ReaderId == reader.id && x.returned == false).Select(x => new
-            {
-                x.id,
-                Book = x.Book.Name,
-                Reader = x.Reader.Fullname,
-                x.StartDate,
-                x.EndDate,
-                x.Debtbook
+            gridviewrefresh(reader.id);
+
+            //dataGridView1.DataSource = db.Orderrs.Where(x => x.ReaderId == reader.id && x.returned == false).Select(x => new
+            //{
+            //    x.id,
+            //    Book = x.Book.Name,
+            //    Reader = x.Reader.Fullname,
+            //    x.StartDate,
+            //    x.EndDate,
+            //    x.Debtbook
 
 
-            }).ToList();
+            //}).ToList();
 
 
 
@@ -68,7 +70,7 @@ namespace Llibrary_Management_System
             DateTime EndDate = Convert.ToDateTime(order.EndDate);
             int dfday = (datanow.Date - EndDate.Date).Days;
 
-           // MessageBox.Show(dfday.ToString(), "Warning", MessageBoxButtons.OK);
+           // MessageBox.Show(idd.ToString(), "Warning", MessageBoxButtons.OK);
 
             double debt=0;
             if (dfday > 0)
@@ -76,7 +78,7 @@ namespace Llibrary_Management_System
                 debt =double.Parse(order.Debtbook.ToString())/200;
             }
 
-            orderid = order.id;
+            orderid = idd;
 
             debt = Math.Round(debt,2);
             double payment = debt + double.Parse(order.Debtbook.ToString());
@@ -85,6 +87,7 @@ namespace Llibrary_Management_System
             txtPrice.Text = order.Debtbook.ToString();
             txtPayment.Text = payment.ToString();
 
+            idd = 0;
 
         }
 
@@ -93,11 +96,25 @@ namespace Llibrary_Management_System
             Reader reader = db.Readers.FirstOrDefault(x => x.IdentityNum.ToLower() == txtidentity.Text.ToLower());
             Orderr order = db.Orderrs.FirstOrDefault(x => x.id == orderid);
             order.returned = true;
+           
             db.SaveChanges();
 
+           // MessageBox.Show(reader.id.ToString(), "Warning", MessageBoxButtons.OK);
 
-         //   if(db.Orderrs.Any(x=>x.ReaderId==reader.id))
-            dataGridView1.DataSource = db.Orderrs.Where(x => x.ReaderId == reader.id && x.returned == false).Select(x => new
+              gridviewrefresh(reader.id);
+
+           
+            txtBookname.Text = "";
+            txtPayment.Text = "";
+            txtPrice.Text = "";
+            txtReadername.Text = "";
+
+        }
+
+        private void gridviewrefresh(int id)
+        {
+           // MessageBox.Show(id.ToString(), "Warning", MessageBoxButtons.OK);
+            dataGridView1.DataSource = db.Orderrs.Where(x => x.ReaderId == id && x.returned == false).Select(x => new
             {
                 x.id,
                 Book = x.Book.Name,
@@ -107,13 +124,6 @@ namespace Llibrary_Management_System
                 x.Debtbook
 
             }).ToList();
-
-            txtidentity.Text = "";
-            txtBookname.Text = "";
-            txtPayment.Text = "";
-            txtPrice.Text = "";
-            txtReadername.Text = "";
-
         }
     }
 }

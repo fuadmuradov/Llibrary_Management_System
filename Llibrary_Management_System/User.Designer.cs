@@ -33,11 +33,7 @@ namespace Llibrary_Management_System
             this.addBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteReaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookTrackingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.todayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tomorrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.debtorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmbgenre = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -53,6 +49,7 @@ namespace Llibrary_Management_System
             this.cmbDay = new System.Windows.Forms.ComboBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
+            this.bookReturnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -65,8 +62,8 @@ namespace Llibrary_Management_System
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addBookToolStripMenuItem,
             this.readersToolStripMenuItem,
-            this.reportToolStripMenuItem,
-            this.bookTrackingToolStripMenuItem});
+            this.bookTrackingToolStripMenuItem,
+            this.bookReturnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1091, 28);
@@ -92,43 +89,16 @@ namespace Llibrary_Management_System
             // deleteReaderToolStripMenuItem
             // 
             this.deleteReaderToolStripMenuItem.Name = "deleteReaderToolStripMenuItem";
-            this.deleteReaderToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deleteReaderToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this.deleteReaderToolStripMenuItem.Text = "Delete Reader";
             this.deleteReaderToolStripMenuItem.Click += new System.EventHandler(this.deleteReaderToolStripMenuItem_Click);
             // 
-            // reportToolStripMenuItem
-            // 
-            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(68, 26);
-            this.reportToolStripMenuItem.Text = "Report";
-            // 
             // bookTrackingToolStripMenuItem
             // 
-            this.bookTrackingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.todayToolStripMenuItem,
-            this.tomorrowToolStripMenuItem,
-            this.debtorsToolStripMenuItem});
             this.bookTrackingToolStripMenuItem.Name = "bookTrackingToolStripMenuItem";
-            this.bookTrackingToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
+            this.bookTrackingToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
             this.bookTrackingToolStripMenuItem.Text = "Book Tracking";
-            // 
-            // todayToolStripMenuItem
-            // 
-            this.todayToolStripMenuItem.Name = "todayToolStripMenuItem";
-            this.todayToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
-            this.todayToolStripMenuItem.Text = "Today";
-            // 
-            // tomorrowToolStripMenuItem
-            // 
-            this.tomorrowToolStripMenuItem.Name = "tomorrowToolStripMenuItem";
-            this.tomorrowToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
-            this.tomorrowToolStripMenuItem.Text = "Tomorrow";
-            // 
-            // debtorsToolStripMenuItem
-            // 
-            this.debtorsToolStripMenuItem.Name = "debtorsToolStripMenuItem";
-            this.debtorsToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
-            this.debtorsToolStripMenuItem.Text = "Debtors";
+            this.bookTrackingToolStripMenuItem.Click += new System.EventHandler(this.bookTrackingToolStripMenuItem_Click);
             // 
             // cmbgenre
             // 
@@ -286,6 +256,13 @@ namespace Llibrary_Management_System
             this.label5.TabIndex = 17;
             this.label5.Text = "Orders:";
             // 
+            // bookReturnToolStripMenuItem
+            // 
+            this.bookReturnToolStripMenuItem.Name = "bookReturnToolStripMenuItem";
+            this.bookReturnToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
+            this.bookReturnToolStripMenuItem.Text = "Book Return";
+            this.bookReturnToolStripMenuItem.Click += new System.EventHandler(this.bookReturnToolStripMenuItem_Click);
+            // 
             // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -328,7 +305,6 @@ namespace Llibrary_Management_System
         private System.Windows.Forms.ToolStripMenuItem addBookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem readersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteReaderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         private System.Windows.Forms.ComboBox cmbgenre;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -340,13 +316,11 @@ namespace Llibrary_Management_System
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripMenuItem bookTrackingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem todayToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tomorrowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem debtorsToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbDay;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolStripMenuItem bookReturnToolStripMenuItem;
     }
 }

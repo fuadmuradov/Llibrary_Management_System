@@ -144,7 +144,7 @@ namespace Llibrary_Management_System
                 }).ToList();
 
 
-                dataGridView3.DataSource = db.Orderrs.Where(x => x.ReaderId == reader.id).Select(x => new
+                dataGridView3.DataSource = db.Orderrs.Where(x => x.ReaderId == reader.id && x.returned==false).Select(x => new
                 {
                     OrderNum = x.id,
                      x.StartDate,
@@ -215,7 +215,7 @@ namespace Llibrary_Management_System
             db.Orderrs.Add(orderr);
             db.SaveChanges();
 
-            dataGridView3.DataSource = db.Orderrs.Where(x => x.ReaderId == reader.id).Select(x => new
+            dataGridView3.DataSource = db.Orderrs.Where(x => x.ReaderId == reader.id && x.returned==false).Select(x => new
             {
                 OrderNum = x.id,
                 Reader = x.Reader.Fullname,
@@ -238,7 +238,25 @@ namespace Llibrary_Management_System
 
         private void deleteReaderToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DeleteReader dlr = new DeleteReader();
+            dlr.Show();
+        }
 
+        private void bookTrackingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Tracking tr = new Tracking();
+            tr.Show();
+        }
+
+        private void reportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bookReturnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            B_Return brt = new B_Return();
+            brt.Show();
         }
     }
 }

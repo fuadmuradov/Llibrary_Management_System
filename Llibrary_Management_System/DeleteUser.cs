@@ -26,13 +26,11 @@ namespace Llibrary_Management_System
         }
         public void datagridrefresh()
         {
-            dataGridView1.DataSource = db.Users.Where(x=>x.isAdmin==false && x.isDeleted == false).Select(x => new
+            dataGridView1.DataSource = db.Users.Where(x=>x.isAdmin==false && x.isDeleted == false && x.isUser==true).Select(x => new
             {
-                ReaderNum = x.id,
+                UserNum = x.id,
                 x.Fullname,
                 x.Email,
-                
-
             }).ToList();
         }
 
@@ -87,6 +85,12 @@ namespace Llibrary_Management_System
 
 
 
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+           txtname.Text = dataGridView1.Rows[e.RowIndex].Cells["Fullname"].Value.ToString();
+           txtemail.Text = dataGridView1.Rows[e.RowIndex].Cells["Email"].Value.ToString();
         }
     }
 }
