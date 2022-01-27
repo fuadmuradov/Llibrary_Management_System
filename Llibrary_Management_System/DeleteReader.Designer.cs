@@ -59,6 +59,7 @@ namespace Llibrary_Management_System
             this.btndelete.TabIndex = 22;
             this.btndelete.Text = "Delete Reader";
             this.btndelete.UseVisualStyleBackColor = false;
+            this.btndelete.Click += new System.EventHandler(this.btndelete_Click);
             // 
             // label2
             // 
@@ -97,6 +98,7 @@ namespace Llibrary_Management_System
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(776, 244);
             this.dataGridView1.TabIndex = 18;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // txtname
             // 
@@ -120,6 +122,7 @@ namespace Llibrary_Management_System
             this.Controls.Add(this.txtname);
             this.Name = "DeleteReader";
             this.Text = "DeleteReader";
+            this.Load += new System.EventHandler(this.DeleteReader_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

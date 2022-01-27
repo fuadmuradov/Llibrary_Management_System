@@ -42,6 +42,7 @@ namespace Llibrary_Management_System
             txtwriter.Text = "";
             txtamount.Value = 0;
             txtprice.Value = 0;
+            txtSearchname.Text = "";
         }
         private void AddBook_Load(object sender, EventArgs e)
         {
@@ -61,8 +62,8 @@ namespace Llibrary_Management_System
             string writer = txtwriter.Text;
             int amount = int.Parse(txtamount.Value.ToString());
             double price = double.Parse(txtprice.Value.ToString());
-
-            bool checkdb = db.Books.Any(x => x.Name == name);
+    
+            bool checkdb = db.Books.Any(x => x.Name == name && x.isDeleted==false);
 
 
 
@@ -79,7 +80,10 @@ namespace Llibrary_Management_System
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            else
+
+            Book book1 = db.Books.FirstOrDefault(x => x.Name == name);
+
+            if (book1==null || book1.isDeleted == true)
             {
                 Book book = new Book
                 {
@@ -95,7 +99,18 @@ namespace Llibrary_Management_System
                 db.SaveChanges();
                 datagridrefresh();
                 cleartxt();
+                return;
             }
+
+            if (book1.isDeleted==false)
+            {
+                MessageBox.Show("This Book Already Exist !!!", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+           
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -141,20 +156,28 @@ namespace Llibrary_Management_System
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            bool checkbook = db.Books.Any(x => x.Name == searchname);
+           
 
-            Book book = db.Books.FirstOrDefault(x=>x.Name == searchname);
-
-            if (book == null)
+            if (!checkbook)
             {
                 MessageBox.Show("This Book Not Exist", "Warning",
                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            Book book = db.Books.FirstOrDefault(x => x.Name == searchname && x.isDeleted==false);
+            if (book==null)
+            {
+                MessageBox.Show("This Book Deleted", "Warning",
+                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             else
             {
-                bookid = book.id;
+                db.SaveChanges();
 
-                dataGridView1.DataSource = db.Books.Where(x => x.Name == searchname).Select(x => new
+                dataGridView1.DataSource = db.Books.Where(x => x.Name == searchname && x.isDeleted==false).Select(x => new
                 {
                     x.id,
                     x.Name,
@@ -164,7 +187,7 @@ namespace Llibrary_Management_System
                     Genre = x.Genre.Name
 
                 }).ToList();
-
+                bookid = book.id;
                 txtAddName.Text = book.Name;
                 txtwriter.Text = book.Writer;
                 txtamount.Value = book.Amount;
